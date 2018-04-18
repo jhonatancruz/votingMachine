@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <script>
+  function load()
+    {
+    window.location.href = "{{url_for('pickcampaign')}}";
+
+    }
+  </script>
+  <title>Voting Machine</title>
+
+      <link rel="stylesheet" href="static/css/scannerstyle.css">
+
+
+</head>
+
+<body onload="load()" >
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <center><h1>Scanning for IDs ......<h1></center>
+
+  <div class="ocrloader" >
+  <em></em>
+  <div>
+
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i>
+  </div>
+  <span></span>
+
+</div>
+
+
+
+</body>
+
+</html>
