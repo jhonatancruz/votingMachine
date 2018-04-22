@@ -1,0 +1,93 @@
+<html>
+<head>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<style>
+body {
+  margin-top:20px;
+}
+.panel-body:not(.two-col) {
+  padding:0px
+}
+.glyphicon {
+  margin-right:5px;
+}
+.glyphicon-new-window {
+  margin-left:5px;
+}
+.panel-body .radio,.panel-body .checkbox {
+  margin-top: 0px;margin-bottom: 0px;
+}
+.panel-body .list-group {
+  margin-bottom: 0;
+}
+.margin-bottom-none {
+  margin-bottom: 0;
+}
+.panel-body .radio label,.panel-body .checkbox label {
+  display:block;
+ }
+.center{
+  text-align: center;
+}
+</style>
+
+</head>
+<body>
+  <h1 class="center">Voting Machine</h1>
+<div class="container">
+  <div class="col-md.text-center">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+              <h3 class="panel-title">
+                  <span class="glyphicon glyphicon-hand-right"></span>Who do you choose as Vice President?</h3>
+          </div>
+          <div class="panel-body">
+              <ul class="list-group" name="pickingCampaign">
+          <form method="POST" action="/treasurerVote">
+            <div class="form-group">
+              <ul class="list-group" name="pickingCampaign">
+                  <li class="list-group-item">
+                      <div class="radio">
+                          <label>
+                              <input type="radio" name="optradio" value="Joe Biden" id="biden" >
+                              Joe Biden
+                          </label>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div class="radio">
+                          <label>
+                              <input type="radio" name="optradio" value="Mike Pence" id="pence">
+                              Mike Pence
+                          </label>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div class="radio">
+                          <label>
+                              <input type="radio" name="optradio" value="Al Gore" id="gore">
+                              Al Gore
+                          </label>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div class="radio">
+                          <label>
+                              <input type="radio" name="optradio" value="Gerald ford" id="ford">
+                              Gerald Ford
+                          </label>
+                      </div>
+                  </li>
+                </ul>
+            </div>
+            <div class="panel-footer text-center">
+              <button type="submit" class="btn btn-success btn-block btn-sm">Vote</button>
+          </div>
+
+  </form>
+</body>
+</html>

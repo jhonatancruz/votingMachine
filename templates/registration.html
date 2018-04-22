@@ -1,0 +1,145 @@
+<html>
+<head>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+body {
+  margin-top:20px;
+}
+.panel-body:not(.two-col) {
+  padding:0px
+}
+.glyphicon {
+  margin-right:5px;
+}
+.glyphicon-new-window {
+  margin-left:5px;
+}
+.panel-body .radio,.panel-body .checkbox {
+  margin-top: 0px;margin-bottom: 0px;
+}
+.panel-body .list-group {
+  margin-bottom: 0;
+}
+.margin-bottom-none {
+  margin-bottom: 0;
+}
+.panel-body .radio label,.panel-body .checkbox label {
+  display:block;
+ }
+.center{
+  text-align: center;
+}
+</style>
+</head>
+<!-- <body >
+  <h1>Register Now</h1>
+  <div class= "container">
+  <div class="col-md.text-center">
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <div class="panel-heading">
+              <h3 class="panel-title">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="firstname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="lastName" class="form-control" id="exampleInputPassword1" placeholder="Last Name">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleSelect2">Example multiple select</label>
+      <select multiple class="form-control" id="exampleSelect2">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleTextarea">Example textarea</label>
+      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFile">File input</label>
+      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    </div>
+    <fieldset class="form-group">
+      <legend>Radio buttons</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+          Option one is this and that&mdash;be sure to include why it's great
+        </label>
+      </div>
+      <div class="form-check">
+      <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          Option two can be something else and selecting it will deselect option one
+        </label>
+      </div>
+      <div class="form-check disabled">
+      <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+          Option three is disabled
+        </label>
+      </div>
+    </fieldset>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input">
+        Check me out
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</div>
+</div>
+</body> -->
+<body>
+  <h1 class="center">Voting Machine</h1>
+<div class="container">
+  <div class="col-md.text-center">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+              <h2 class="panel-title">
+                  <span class="glyphicon glyphicon-hand-right"></span>Registration</h2>
+          </div>
+          <div class="panel-body">
+            <form method="POST" action="/saveinfo">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input name="firstName" type="firstname" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="First Name">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input name="lastName" type="lastName" class="form-control" id="lastName" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+              <label for="exampleSelect2">ID number</label>
+              <select multiple class="form-control" id="idnumber" name="idnumber">
+                <option>1</option>
+                <option>2</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+              </select>
+            </div>
+            </div>
+          </div>
+            <div class="panel-footer text-center">
+              <button type="submit" class="btn btn-success btn-block btn-sm">Submit</button>
+          </div>
+
+  </form>
+</div>
+</div>
+</div>
+</body>
+</html>

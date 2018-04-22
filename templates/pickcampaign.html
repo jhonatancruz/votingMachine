@@ -1,0 +1,87 @@
+<html>
+<head>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<style>
+body {
+  margin-top:20px;
+}
+.panel-body:not(.two-col) {
+  padding:0px
+}
+.glyphicon {
+  margin-right:5px;
+}
+.glyphicon-new-window {
+  margin-left:5px;
+}
+.panel-body .radio,.panel-body .checkbox {
+  margin-top: 0px;margin-bottom: 0px;
+}
+.panel-body .list-group {
+  margin-bottom: 0;
+}
+.margin-bottom-none {
+  margin-bottom: 0;
+}
+.panel-body .radio label,.panel-body .checkbox label {
+  display:block;
+ }
+.center{
+  text-align: center;
+}
+</style>
+
+</head>
+<body>
+  <h1 class="center">Voting Machine</h1>
+  <h2 class="center">Welcome {{userInfo}}, you are using card number {{cardNumber}} !</h2>
+<div class="container">
+  <div class="col-md.text-center">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+              <h3 class="panel-title">
+                  <span class="glyphicon glyphicon-hand-right"></span>What Campaign Would you like to initate?</h3>
+          </div>
+          <div class="panel-body">
+              <ul class="list-group" name="pickingCampaign">
+          <form method="POST" action="/voting">
+            <div class="form-group">
+              <ul class="list-group" name="pickingCampaign">
+                  <li class="list-group-item">
+                      <div class="radio">
+                          <label>
+                              <input type="radio" name="optradio" value="Presidential" id="Presidential" >
+                              5 candidates
+                          </label>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div class="radio">
+                          <label>
+                              <input type="radio" name="optradio" value="NJ" id="NJ">
+                              Second Race
+                          </label>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div class="radio">
+                          <label>
+                              <input type="radio" name="optradio" value="ballot" id="ballot">
+                              Ballot Race
+                          </label>
+                      </div>
+                  </li>
+                </ul>
+            </div>
+            <div class="panel-footer text-center">
+              <button type="submit" class="btn btn-success btn-block btn-sm">Vote</button>
+          </div>
+
+  </form>
+
+</body>
+</html>
