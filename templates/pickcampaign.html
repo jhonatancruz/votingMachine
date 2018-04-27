@@ -37,51 +37,186 @@ body {
 
 </head>
 <body>
+  <nav class="navbar navbar-inverse" role="navigation">
+  <h1 class="center">Voting Machine</h1>
+</nav>
   <h1 class="center">Voting Machine</h1>
   <h2 class="center">Welcome {{userInfo}}, you are using card number {{cardNumber}} !</h2>
 <div class="container">
   <div class="col-md.text-center">
+    <form method="POST" action="/voting">
+    <div class="panel panel-primary">
       <div class="panel panel-primary">
           <div class="panel-heading">
               <h3 class="panel-title">
-                  <span class="glyphicon glyphicon-hand-right"></span>What Campaign Would you like to initate?</h3>
+                  <span class="glyphicon glyphicon-hand-right"></span>Who do you choose as President? (Pick One)
+                </h3>
           </div>
           <div class="panel-body">
               <ul class="list-group" name="pickingCampaign">
+          <div>
           <form method="POST" action="/voting">
             <div class="form-group">
               <ul class="list-group" name="pickingCampaign">
+                <br>
                   <li class="list-group-item">
                       <div class="radio">
                           <label>
-                              <input type="radio" name="optradio" value="Presidential" id="Presidential" >
-                              5 candidates
+                              <input type="radio" name="president" value="Barrack" id="Barrack" >
+                              Barrack Obama
                           </label>
                       </div>
                   </li>
                   <li class="list-group-item">
                       <div class="radio">
                           <label>
-                              <input type="radio" name="optradio" value="NJ" id="NJ">
-                              Second Race
+                              <input type="radio" name="president" value="Donald" id="Donald">
+                              Donald Trump
                           </label>
                       </div>
                   </li>
                   <li class="list-group-item">
                       <div class="radio">
                           <label>
-                              <input type="radio" name="optradio" value="ballot" id="ballot">
-                              Ballot Race
+                              <input type="radio" name="president" value="Mitt" id="Mitt">
+                              Mitt Romney
+                          </label>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div class="radio">
+                          <label>
+                              <input type="radio" name="president" value="Bernie" id="Bernie">
+                              Bernie Sanders
                           </label>
                       </div>
                   </li>
                 </ul>
             </div>
+          </form>
+          </div>
+        </div>
+      </div>
+          </hr>
+          <div class="panel panel-primary">
+              <div class="panel-heading">
+                  <h3 class="panel-title">
+                      <span class="glyphicon glyphicon-hand-right"></span>What industries would benefit from Blockchain the most? (Pick more than one)
+                    </h3>
+              </div>
+              <div class="panel-body">
+                  <ul class="list-group" name="pickingCampaign">
+              <div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+                  </label>
+                </div>
+                <div class="form-check form-check-inline disabled">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
+                  </label>
+                </div>
+              <!-- <form method="POST" action="/voting">
+                <div class="form-group">
+                  <ul class="list-group" name="pickingCampaign">
+                    <br>
+                      <li class="list-group-item">
+                          <div class="radio">
+                              <label>
+                                  <input type="radio" name="blockchain" value="financial" id="financial" >
+                                  Financial Services
+                              </label>
+                          </div>
+                      </li>
+                      <li class="list-group-item">
+                          <div class="radio">
+                              <label>
+                                  <input type="radio" name="blockchain" value="health" id="health">
+                                  Healthcare
+                              </label>
+                          </div>
+                      </li>
+                      <li class="list-group-item">
+                          <div class="radio">
+                              <label>
+                                  <input type="radio" name="blockchain" value="supply" id="supply">
+                                  Supply Chain Management
+                              </label>
+                          </div>
+                      </li>
+                      <li class="list-group-item">
+                          <div class="radio">
+                              <label>
+                                  <input type="radio" name="blockchain" value="insurance" id="insurance" >
+                                  Insurance
+                              </label>
+                          </div>
+                      </li>
+                      <li class="list-group-item">
+                          <div class="radio">
+                              <label>
+                                  <input type="radio" name="blockchain" value="cryto" id="cryto" >
+                                  Crytocurrency Exchanges
+                              </label>
+                          </div>
+                      </li>
+                    </ul>
+                </div>
+              </form> -->
+            </div>
+            </div>
+          </div>
+        </hr>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-hand-right"></span>Should Texas be its own country? (Pick one)
+                  </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group" name="pickingCampaign">
+            <div>
+            <form method="POST" action="/voting">
+              <div class="form-group">
+                <ul class="list-group" name="pickingCampaign">
+                  <br>
+                    <li class="list-group-item">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optradio" value="Presidential" id="Presidential" >
+                                Yes
+                            </label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optradio" value="NJ" id="NJ">
+                                No
+                            </label>
+                        </div>
+                    </li>
+                  </ul>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
             <div class="panel-footer text-center">
               <button type="submit" class="btn btn-success btn-block btn-sm">Vote</button>
           </div>
-
-  </form>
-
+        </form>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

@@ -36,18 +36,19 @@ body {
 </style>
 
 </head>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <a class="navbar-brand" href="#">Voting Machine</a>
+</nav>
 <body>
-  <h1 class="center">Voting Machine</h1>
+<br>
+<br>
 <div class="container">
   <div class="col-md.text-center">
       <div class="panel panel-primary">
           <div class="panel-heading">
             </div>
           <center><h2>Thank You for Voting {{userData}}</h2>
-<!--
-			<h2>Your Results</h2>
-			<p>{{userData[0]}}</p>
--->
+            <button><a href="{{url_for('index')}}">Back to Menu</a></button>
           </center>
           </div>
         </div>

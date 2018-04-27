@@ -4,6 +4,9 @@
   <title>Voting Machine</title>
   <link href="https://fonts.googleapis.com/css?family=Shrikhand|Work+Sans:900" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <script>
     /*! modernizr 3.3.1 (Custom Build) | MIT *
      * https://modernizr.com/download/?-backgroundcliptext-setclasses !*/
@@ -18,7 +21,12 @@
 }
 </style>
 </head>
-  <body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <a class="navbar-brand" href="#">Voting Machine</a>
+  <button type="button" class="btn btn-danger navbar-btn"><a href="{{url_for('checkAdmin')}}">Close Polls</button>
+</nav>
+<body>
+<br>
     <h1>Vote Now</h1>
     <!-- <div class="ocrloader">
       <em></em>

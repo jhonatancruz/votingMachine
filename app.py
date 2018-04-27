@@ -17,6 +17,8 @@ cardInfoThroughNumber= {6:"4346DF2B", 5:"4ABBDF2B", 4: "708CDF2B", 2: "86E7DF2B"
 userData=[]
 checkList={"first":[],"last":[],"cardNum":[]}
 checkListForVoters={"first":[],"last":[],"cardNum":[]}
+votesDirectory={"votesCount":[], "votes":[]}
+votes={"barack":1, "donald":2,"bernie":3,"mitt":4,"financial":5,"health":6,"supply":7, "insurance":8, "yes":9, "no":10}
 
 
 
@@ -34,11 +36,30 @@ def startVote():
 	serStr= serStr.strip()
 	serStr= serStr[2:-5]
 	serStr= serStr.replace(" ","")
-	if serStr== "4ABBDF2B":
+	print(serStr)
+	if serStr== "D3B865D8":
 		return render_template("index.html")
 	else:
 		return "<h1>Not an Admin ID</h1>"
 
+@app.route("/checkAdmin")
+def checkAdmin():
+	return render_template("checkAdmin.html")
+
+@app.route("/checking")
+def checking():
+	serStr= ser.readline()
+	# TODO: if id is in database, then have user choose a campagin, if not then try again
+	# usingCard = cardInfo[serStr][1]
+	serStr= str(serStr)
+	serStr= serStr.strip()
+	serStr= serStr[2:-5]
+	serStr= serStr.replace(" ","")
+	print(serStr)
+	if serStr== "D3B865D8":
+		return redirect(url_for('results'))
+	else:
+		return '<h1>Not an admin</h1>'
 
 @app.route("/checkid", methods=["POST","GET"])
 def checkid():
@@ -90,12 +111,17 @@ def pickcampaign():
 		print("location of card number in list",cardNumberLocation)
 		userInfo= checkListForVoters["first"][cardNumberLocation]+" "+checkListForVoters["last"][cardNumberLocation]
 		print("Name of Card Owner:", userInfo)
-		return render_template("pickcampaign.html", userInfo=userInfo, cardNumber= cardNumber)
+		# return render_template("pickcampaign.html", userInfo=userInfo, cardNumber= cardNumber)
+		return render_template("newhtml.html", userInfo=userInfo, cardNumber=cardNumber)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
 	#registration form
 	return render_template("registration.html")
+
+@app.route("/index", methods=["GET", "POST"])
+def index():
+	return render_template("index.html")
 
 @app.route("/saveinfo",methods=["POST"])
 def saveinfo():
@@ -134,15 +160,16 @@ def saveinfo():
 
 		#will analyze data and check if card number has been registers, and if someone with the same name has register
 		if cardNumber in checkList["cardNum"]:
-		    print("no sorry someone is already registered with this card")
-		elif firstName in checkList["first"]:
-		    locationOfMatchVal= checkList["first"].index(firstName)
-		    print("yea there... checking for last name at index", checkList["first"].index(firstName), " since thats where we found first name")
-		    if checkList["last"][locationOfMatchVal] == lastName:
-				
-		        print("no sorry, we found someone with that exact name")
+			print("no sorry someone is already registered with this card")
+			return "<h1>no sorry someone is already registered with this card</h1>"
+		# elif firstName in checkList["first"]:
+		#     locationOfMatchVal= checkList["first"].index(firstName)
+		#     print("yea there... checking for last name at index", checkList["first"].index(firstName), " since thats where we found first name")
+		#     if checkList["last"][locationOfMatchVal] == lastName:
+				# return "<h1>Found someone with the exact name, sorry</h1>"
 		else:
 		    print("not there, you are able to register")
+
 		    #will add data to next open row
 		    max_row=ws.max_row #find the max row that data is in
 		    print(max_row)
@@ -150,13 +177,11 @@ def saveinfo():
 		    ws.cell(row=newRow, column=1).value= firstName
 		    ws.cell(row=newRow, column=2).value= lastName
 		    ws.cell(row=newRow, column=3).value= cardNumber
+			# wb.save('registeredVoters.xlsx')
+			# return '<h1>You were able to register</h1>'
+
 
 		wb.save('registeredVoters.xlsx')
-
-		# cardHex= cardInfoThroughNumber[int(cardNumber)]
-		# print(cardHex)
-		# # session[str(cardNumber)]= [cardHex,firstName+" "+lastName]
-		# print(session[str(cardNumber)])
 		return redirect(url_for("home"))
 	else:
 		return render_template("registration.html")
@@ -166,48 +191,112 @@ def saveinfo():
 def voting():
 	#based on the choosen campagin it will give you a certain campagin
 	if request.method == "POST":
-		checkbox= request.form["optradio"]
-		userData.append(checkbox)
-		print(checkbox)
-		if checkbox == "Presidential":
-			return render_template("presidentialVote.html")
-		elif checkbox == "NJ":
-			return "<br><br><center><h1>Not available right now!</h1></center>"
-		elif checkbox == "ballot":
-			return render_template("ballot.html")
-	else:
-		print("didnt find campaign")
-		return render_template("index.html")
+		president= request.form['president']
+		blockchain= request.form['blockchain']
+		texas= request.form['texas']
 
-@app.route("/ballotDone", methods=["POST"])
-def ballotDone():
-	if request.method == "POST":
-		yesorno= request.form["optradio"]
-		return "<h1>Thank You for Voting</h1>"
+		wb = Workbook()
+		wb = load_workbook('votes.xlsx')
+		ws = wb.active
+
+		#will add all values in excel sheet to dictinary of list for analysis of data
+		# No of written Rows in sheet
+		r = ws.max_row
+		# No of written Columns in sheet
+		c = ws.max_column
+		# Reading each cell in excel
+		for i in range(1, r+1):
+		    countTheCols=0
+		    for j in range(1, c+1):
+		        countTheCols+=1
+		        if countTheCols==1:
+		            # print("First: ",ws.cell(row=i, column=j).value)
+		            votesDirectory["votes"].append(ws.cell(row=i, column=j).value)
+		        elif countTheCols==2:
+		            # print("Last: ",ws.cell(row=i, column=j).value)
+		            votesDirectory["votesCount"].append(ws.cell(row=i, column=j).value)
 
 
 
-@app.route("/vicePresVote", methods=["POST"])
-def vicePresVote():
-	if request.method == "POST":
-		presVote= request.form["optradio"]
-		userData.append(presVote)
-		print(presVote)
-		return render_template("vicepresVote.html")
-	else:
-		print("didnt record a president vote")
-		return render_template("presidentialVote.html")
 
-@app.route("/treasurerVote", methods=["POST"])
-def treasurerVote():
-	if request.method == "POST":
-		vicePresVote= request.form["optradio"]
-		userData.append(vicePresVote)
-		print(vicePresVote)
-		return render_template("treasurerVote.html")
-	else:
-		print("didnt record a vice president vote")
-		return render_template("vicePresVote.html")
+		print(votesDirectory)
+		print(president, blockchain, texas)
+
+		locationOfPres= votesDirectory["votes"].index(president)
+		presVotes= votesDirectory["votesCount"][locationOfPres]
+		presVotesUpdated= int(presVotes)+1
+
+		locationOfBlock= votesDirectory["votes"].index(blockchain)
+		blockVotes= votesDirectory["votesCount"][locationOfBlock]
+		blockVotesUpdated= int(blockVotes)+1
+
+		locationOfTexas= votesDirectory["votes"].index(texas)
+		texasVotes= votesDirectory["votesCount"][locationOfTexas]
+		texasVotesUpdated= int(texasVotes)+1
+
+		ws.cell(row=votes[president], column=2).value= presVotesUpdated
+		ws.cell(row=votes[blockchain], column=2).value= blockVotesUpdated
+		ws.cell(row=votes[texas], column=2).value= texasVotesUpdated
+        #
+		# wb.save('registeredVoters.xlsx')
+		# return redirect(url_for("home"))
+
+		wb.save('votes.xlsx')
+		return render_template("thankYou.html")
+
+
+@app.route("/results", methods=["POST", "GET"])
+def results():
+	wb = Workbook()
+	wb = load_workbook('votes.xlsx')
+	ws = wb.active
+
+	#will add all values in excel sheet to dictinary of list for analysis of data
+	# No of written Rows in sheet
+	r = ws.max_row
+	# No of written Columns in sheet
+	c = ws.max_column
+	# Reading each cell in excel
+	for i in range(1, r+1):
+	    countTheCols=0
+	    for j in range(1, c+1):
+	        countTheCols+=1
+	        if countTheCols==1:
+	            # print("First: ",ws.cell(row=i, column=j).value)
+	            votesDirectory["votes"].append(ws.cell(row=i, column=j).value)
+	        elif countTheCols==2:
+	            # print("Last: ",ws.cell(row=i, column=j).value)
+	            votesDirectory["votesCount"].append(ws.cell(row=i, column=j).value)
+	voters= votesDirectory["votes"]
+	votes= votesDirectory["votesCount"]
+	allVotes= votesDirectory
+	return render_template("ballot.html", votes=votes, voters=voters, allVotes=allVotes)
+
+
+
+
+
+# @app.route("/vicePresVote", methods=["POST"])
+# def vicePresVote():
+# 	if request.method == "POST":
+# 		presVote= request.form["optradio"]
+# 		userData.append(presVote)
+# 		print(presVote)
+# 		return render_template("vicepresVote.html")
+# 	else:
+# 		print("didnt record a president vote")
+# 		return render_template("presidentialVote.html")
+#
+# @app.route("/treasurerVote", methods=["POST"])
+# def treasurerVote():
+# 	if request.method == "POST":
+# 		vicePresVote= request.form["optradio"]
+# 		userData.append(vicePresVote)
+# 		print(vicePresVote)
+# 		return render_template("treasurerVote.html")
+# 	else:
+# 		print("didnt record a vice president vote")
+# 		return render_template("vicePresVote.html")
 
 @app.route("/thankYou", methods=["POST"])
 def thankYou():

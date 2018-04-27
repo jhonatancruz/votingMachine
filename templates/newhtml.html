@@ -1,0 +1,159 @@
+<html>
+<head>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<style>
+body {
+  margin-top:20px;
+}
+.panel-body:not(.two-col) {
+  padding:0px
+}
+.glyphicon {
+  margin-right:5px;
+}
+.glyphicon-new-window {
+  margin-left:5px;
+}
+.panel-body .radio,.panel-body .checkbox {
+  margin-top: 0px;margin-bottom: 0px;
+}
+.panel-body .list-group {
+  margin-bottom: 0;
+}
+.margin-bottom-none {
+  margin-bottom: 0;
+}
+.panel-body .radio label,.panel-body .checkbox label {
+  display:block;
+ }
+.center{
+  text-align: center;
+}
+</style>
+
+</head>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <a class="navbar-brand" href="#">Voting Machine</a>
+</nav>
+<body>
+<br>
+<br>
+  <h2 class="center">Welcome {{userInfo}}, you are using card number {{cardNumber}} !</h2>
+  <div class="container">
+  <div class="col-md.text-center">
+    <form method="POST" action="/voting">
+    <div class="panel panel-primary">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+              <!-- <h3 class="panel-title">
+                  <span class="glyphicon glyphicon-hand-right"></span>Who do you choose as President? (Pick One)
+                </h3> -->
+          </div>
+              <div class="panel-body">
+                <form method="POST" action="/voting">
+                  <!-- <fieldset class="form-group row">
+                    <legend class="col-form-legend col-sm-2">Radios</legend>
+                    <div class="col-sm-10">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                          Option one is this and that&mdash;be sure to include why it's great
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                          Option two can be something else and selecting it will deselect option one
+                        </label>
+                      </div>
+                      <div class="form-check disabled">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                          Option three is disabled
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset> -->
+                  <div class="container">
+                  <div class="form-check">
+                    <legend>Who should be President?</legend>
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="president" id="exampleRadios1" value="barack">
+                    Barack Obama
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="president" id="exampleRadios2" value="donald">
+                    Donald Trump
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="president" id="exampleRadios3" value="bernie" >
+                    Bernie Sanders
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="president" id="exampleRadios3" value="mitt" >
+                    Mitt Romney
+                  </label>
+                </div>
+                  </div>
+                </hr>
+                <br>
+                  <div class="container">
+                  <div class="form-check form-check-inline">
+                    <legend>What industries would benefit from Blockchain the most? (Pick more than one)</legend>
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="blockchain" value="financial"> Financial
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="blockchain" value="health"> Health
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="blockchain" value="supply" > Supply
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="blockchain" value="insurance"> Insurance
+                    </label>
+                  </div>
+                  </div>
+                  <br>
+                  <div class="container">
+                  <div class="form-check">
+                    <legend>Should Texas be its own country?</legend>
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="texas" id="exampleRadios1" value="yes">
+                    Yes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="texas" id="exampleRadios2" value="no">
+                    No
+                  </label>
+                </div>
+                  </div>
+
+                <button type="submit" class="btn btn-success btn-block btn-sm">Vote</button>
+              </form>
+
+            </div>
+        </div>
+      </div>
+      </div>
+    </div>
+</body>
+</html>

@@ -33,46 +33,77 @@ body {
 .center{
   text-align: center;
 }
+ul#menu li {
+    display:inline;
+}
 </style>
 
 </head>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <a class="navbar-brand" href="#">Voting Machine</a>
+</nav>
 <body>
-  <h1 class="center">Voting Machine</h1>
+  <br>
+  <br>
 <div class="container">
   <div class="col-md.text-center">
       <div class="panel panel-primary">
           <div class="panel-heading">
               <h3 class="panel-title">
-                  <span class="glyphicon glyphicon-hand-right"></span>Do you like electronic voting?</h3>
+                  <span class="glyphicon glyphicon-hand-right"></span>Results</h3>
           </div>
           <div class="panel-body">
-              <ul class="list-group" name="pickingCampaign">
-          <form method="POST" action="/ballotDone">
-            <div class="form-group">
-              <ul class="list-group" name="pickingCampaign">
-                  <li class="list-group-item">
-                      <div class="radio">
-                          <label>
-                              <input type="radio" name="optradio" value="No" id="No" >
-                              No
-                          </label>
-                      </div>
-                  </li>
-                  <li class="list-group-item">
-                      <div class="radio">
-                          <label>
-                              <input type="radio" name="optradio" value="Yes" id="Yes">
-                              Yes
-                          </label>
-                      </div>
-                  </li>
-      
-                </ul>
-            </div>
-            <div class="panel-footer text-center">
-              <button type="submit" class="btn btn-success btn-block btn-sm">Vote</button>
-          </div>
+            <!-- <ul>
+              {% for x in voters %}
+              <li>{{ x }}<li>
+              {% endfor %}
+              {% for i in votes %}
+              <li>{{ i }}<li>
+              {% endfor %}
+            </ul> -->
 
-  </form>
+  <div class="col-xs-6">
+  <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="col-md-1">Candidates</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for x in voters %}
+                <tr>
+                  <td class="col-md-1">{{ x }}</td>
+                </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+</div>
+  <div class="col-xs-6">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="col-md-1">Votes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in votes %}
+                <tr>
+                  <td class="col-md-1">{{ i }}</td>
+                </tr>
+                {% endfor  %}
+
+
+              </tbody>
+            </table></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
 </body>
 </html>
