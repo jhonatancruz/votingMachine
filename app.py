@@ -19,6 +19,7 @@ checkList={"first":[],"last":[],"cardNum":[]}
 checkListForVoters={"first":[],"last":[],"cardNum":[]}
 votesDirectory={"votesCount":[], "votes":[]}
 votes={"barack":1, "donald":2,"bernie":3,"mitt":4,"financial":5,"health":6,"supply":7, "insurance":8, "yes":9, "no":10}
+updatedDirectory= {"votesCount":[], "votes":[]}
 
 
 
@@ -142,6 +143,7 @@ def saveinfo():
 		# No of written Columns in sheet
 		c = ws.max_column
 		# Reading each cell in excel
+		votesDirectory={"votesCount":[], "votes":[]}
 		for i in range(1, r+1):
 		    countTheCols=0
 		    for j in range(1, c+1):
@@ -252,7 +254,7 @@ def results():
 	ws = wb.active
 
 	#will add all values in excel sheet to dictinary of list for analysis of data
-	# No of written Rows in sheet
+	#No of written Rows in sheet
 	r = ws.max_row
 	# No of written Columns in sheet
 	c = ws.max_column
@@ -263,40 +265,15 @@ def results():
 	        countTheCols+=1
 	        if countTheCols==1:
 	            # print("First: ",ws.cell(row=i, column=j).value)
-	            votesDirectory["votes"].append(ws.cell(row=i, column=j).value)
+	            updatedDirectory["votes"].append(ws.cell(row=i, column=j).value)
 	        elif countTheCols==2:
 	            # print("Last: ",ws.cell(row=i, column=j).value)
-	            votesDirectory["votesCount"].append(ws.cell(row=i, column=j).value)
-	voters= votesDirectory["votes"]
-	votes= votesDirectory["votesCount"]
+	            updatedDirectory["votesCount"].append(ws.cell(row=i, column=j).value)
+	voters= updatedDirectory["votes"]
+	votes= updatedDirectory["votesCount"]
 	allVotes= votesDirectory
 	return render_template("ballot.html", votes=votes, voters=voters, allVotes=allVotes)
 
-
-
-
-
-# @app.route("/vicePresVote", methods=["POST"])
-# def vicePresVote():
-# 	if request.method == "POST":
-# 		presVote= request.form["optradio"]
-# 		userData.append(presVote)
-# 		print(presVote)
-# 		return render_template("vicepresVote.html")
-# 	else:
-# 		print("didnt record a president vote")
-# 		return render_template("presidentialVote.html")
-#
-# @app.route("/treasurerVote", methods=["POST"])
-# def treasurerVote():
-# 	if request.method == "POST":
-# 		vicePresVote= request.form["optradio"]
-# 		userData.append(vicePresVote)
-# 		print(vicePresVote)
-# 		return render_template("treasurerVote.html")
-# 	else:
-# 		print("didnt record a vice president vote")
-# 		return render_template("vicePresVote.html")
 
 @app.route("/thankYou", methods=["POST"])
 def thankYou():
